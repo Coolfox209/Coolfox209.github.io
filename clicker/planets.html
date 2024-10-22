@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS Bin</title>
+</head>
+<style>
+    body {
+        width: auto;
+        margin: auto;
+        background-color: rgb(215, 147, 255);
+    }
+
+    #Store {
+        position: absolute;
+        top: 5px;
+        left: 1100px;
+    }
+
+    #Earth {
+        position: absolute;
+        top: 155px;
+        left: 455px;
+        height: 300px;
+        animation-name: earthSpin;
+        animation-duration: 100s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    #AutoNum{
+        position: absolute;
+        top: 45px;
+        left: 5px;
+    }
+    #AutoClick{
+        position: absolute;
+        top: 60px;
+        left: 5px;
+    }
+
+    #Money{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    #Energy{
+        position: absolute;
+        top: 20px;
+        left: 5px;
+    }
+
+    #ScoreBox{
+        position: absolute;
+    }
+    #StoreBox{
+        position: absolute;
+        top: 1px;
+    }
+
+    @keyframes earthSpin {
+        0% {
+            transform: rotate(-360deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    
+    <div id="EarthPic">
+        <img id="Earth" src="earth.png">
+    </div>    
+    <div id="ScoreBox">
+        <img height="110" width="300" src="WhiteBoxBlackOutLine.png">
+    </div>
+    <div id="StoreBox">
+        <img height="110" width="300" src="WhiteBoxBlackOutLine.png">
+    </div>
+    <div id="Money">
+        0
+    </div>
+    <div id="Energy">
+        Energy
+    </div>
+    
+    <div id="AutoNum">
+        0
+    </div>
+
+    <div id="AutoClick">
+        AutoClicker
+    </div>
+    <div id="Store">
+        Store
+    </div>
+
+</body>
+
+</html>
+<script>
+    document.getElementById("EarthPic").addEventListener("click", scoreFun)
+
+    var score = 0
+    var add = 90
+
+    function scoreIs() {
+        score = score + 5555555555555555555555555555555555
+        document.getElementById("Money").innerText = score
+    }
+    function scoreFun(){
+        setInterval(scoreIs, 0)
+    }
+</script>

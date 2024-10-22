@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sans</title>
+  <style>
+    body {
+      width: auto;
+      margin: auto;
+      background-color: aquamarine;
+    }
+    #fast{
+      position: absolute;
+      top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="1700" height="790" canvas style="border:4px solid rgb(255, 102, 0)">
+  </canvas>
+  <img hidden id="sprite" src = "walk 2.png">
+  <button id = "fast">
+    Don't push me!
+  </button>
+</body>
+<script>
+  var canvas = document.getElementById("canvas")
+  var ctx = canvas.getContext("2d")
+  var img = document.getElementById("sprite")
+  var cropy = 85
+  var x = 100
+  var y = 100
+
+  var directionX = 10
+  var directionY = 10
+
+  document.getElementById("fast").addEventListener("click", funny)
+
+  setInterval(main, 100)
+  setInterval(move, 100)
+  
+  function main(){
+    ctx.clearRect(0, 0, 200000, 200000)
+
+    ctx.drawImage(img, cropy, 115, 380, 380, x, y, 300, 300);
+
+   if(cropy === 85){
+    cropy = 600
+   }else if(cropy === 600){
+    cropy = 85
+   }
+  }
+  function move(){
+    if (x <= -80) {
+      directionX = -5
+    }
+    if (x >= 1420) {
+      directionX = 5
+    }
+    document.getElementById("canvas").style.left = x + "px"
+    x = x - directionX
+    if (y <= 0) {
+      directionY = -5
+    }
+    if (y >= 500) {
+      directionY = 5
+    }
+    document.getElementById("canvas").style.top = y + "px"
+    y = y - directionY
+  }
+  function funny(){
+    setInterval(move, 100)
+  }
+</script>
+</html>

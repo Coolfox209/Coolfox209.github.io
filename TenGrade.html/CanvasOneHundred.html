@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>boxyboi</title>
+   <style>
+       body {
+           background-color: rgb(175,238,238);
+       }
+
+       #canvas {
+           position: absolute;
+           background-color: rgb(187, 79, 79);
+           /* background-color: rgb(79, 99, 187); */
+           left: 15%;
+       }
+
+       #score{
+           position:absolute;
+           left:1215px;
+           top:250px;
+           font-family: sans-serif;
+           font-size:50px;
+        }
+       #xp{
+           position:absolute;
+           left:1272px;
+           top:-20px;
+           font-family: sans-serif;
+           font-size:30px;
+        }
+       #means{
+           position:absolute;
+           left:1245px;
+           top: -20px;
+           width: 50px;
+           height: 70px;
+           font-family: sans-serif;
+           font-size:30px;
+        }
+       #fast{
+           position:absolute;
+           left:1215px;
+           top:350px;
+           font-family: sans-serif;
+           font-size:20px;
+        }
+        #equals{
+            position: absolute;
+            left: 1249px;
+            top: 10px;
+            font-family: sans-serif;
+            font-size: 30px;
+            text-align: center;
+        }
+   </style>
+</head>
+<body>
+   <canvas id="canvas" width="900" height="700" canvas style="border:10px solid rgb(255, 0, 0)">
+  </canvas>
+   <p id="score">
+       0
+   </p>
+   <p id="xp">
+       XP
+   </p>
+   <p id="means">
+      _____
+   </p>
+   <p id="equals">
+       0
+   </p>
+   <button id="fast">
+    Speed = Life
+   </button>
+</body>
+</html>
+<script>
+
+   document.addEventListener("keydown", fastier)
+   document.addEventListener("keydown", leave)
+
+
+   var score = 0
+   var equal= 0
+   var changeDirX = 10
+   var changeDirY = -10
+   var canvas = document.getElementById("canvas")
+   var ctx = canvas.getContext("2d")
+   var numBoxes = 120
+   var xboxes = []
+   var yboxes = []
+   var changeDirX = []
+   var changeDirY = []
+   var arrayColorer = []
+   var arrayWarm = []
+   var arrayCold = []
+
+   
+   ctx.clearRect(0, 0, 1000, 1000)
+   setInterval(main, 16)
+
+   for (var i = 0; i < numBoxes; i = i + 1) {
+       xBox = Math.floor(Math.random() * 650) + 1
+       yBox = Math.floor(Math.random() * 550) + 1
+       xboxes.push(xBox)
+       yboxes.push(yBox)
+       RandomDirX = Math.floor(Math.random() * 20) + 1
+       RandomDirY = Math.floor(Math.random() * -20) + 2
+       /* if (randomX === 2) {
+            RandomDirX = 7
+        } else {
+            RandomDirX = -7
+        }
+           if (randomY === 2) {
+            RandomDirY = 7
+        } else {
+            RandomDirY = -7
+        }   */
+       changeDirX.push(RandomDirX);
+       changeDirY.push(RandomDirY);
+       arrayWarm.push(Math.random()*65)
+       arrayCold.push(Math.random()*166-237)
+   }
+   function main() {
+       ctx.clearRect(0, 0, 2000, 2000)
+
+       for (var i = 0; i < numBoxes; i = i + 1) {
+           if (xboxes[i] <= -10) {
+               changeDirX[i] = -changeDirX[i];
+               score = score + 1
+           }
+           if (xboxes[i] >= 800) {
+               changeDirX[i] = -changeDirX[i];
+               score = score + 1
+           }
+           if (yboxes[i] <= -10) {
+               changeDirY[i] = -changeDirY[i];
+               score = score + 1
+           }
+           if (yboxes[i] >= 600) {
+               changeDirY[i] = -changeDirY[i];
+               score = score + 1
+           }
+
+           xboxes[i] = xboxes[i] + changeDirX[i]
+           yboxes[i] = yboxes[i] + changeDirY[i]
+
+           xbox = xboxes[i]
+           ybox = yboxes[i]
+
+           document.getElementById("score").innerText = score
+
+           ctx.fillStyle = "hsl("+arrayWarm[i]+", 50%, 45%)"
+        //    ctx.fillStyle = "hsl("+arrayCold[i]+", 30%, 40%)"
+           ctx.fillRect(xbox, ybox, 100, 100);
+       }
+       document.getElementById("equals").innerText = numBoxes
+
+   }
+
+   function fastier(e){
+    console.log(e.key)
+     if (e.key === "y"){
+      setInterval(main, 25)
+      score = 0
+      numBoxes = numBoxes
+     }
+    }
+    
+    function leave(e){
+        console.log(e.key)
+        if(e.key === "b"){
+            equal = numBoxes
+            score = 0
+            numBoxes = numBoxes + 5
+        }
+        if(e.key === "x"){
+            equal = numBoxes
+            score = 0
+            numBoxes = numBoxes - 2
+        }
+        document.getElementById("score").innerText = score
+        document.getElementById("equals").innerText = numBoxes
+    }
+
+</script>
