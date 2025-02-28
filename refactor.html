@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS Bin</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+function getLoanDetails(principal, years) {
+    var interestRate;
+    if (years > 10) {
+        interestRate = 0.05;
+    } else if (years > 5) {
+        interestRate = 0.04;
+    } else {
+        interestRate = 0.03;
+    }
+    
+    var interest = principal * interestRate * years;
+    
+    return principal + interest
+}
+</script>

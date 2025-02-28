@@ -1,0 +1,4 @@
+How is the jQuery file being loaded into this project: direct download or Content Delivery Network (CDN)?
+Content Delivery Network
+If you load the index.js file beofre the jquery file our program doesn't work. Why? Open the preview in a new tab and look at the console to help you find out why.
+It most likely isn't being called correctly.
