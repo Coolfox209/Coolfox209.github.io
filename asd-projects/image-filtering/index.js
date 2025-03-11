@@ -52,9 +52,9 @@ function applyFilter(filterFunction){
 
 
 // TODO 3: Create reddify function
-function reddify(someTing){
-  rgbNumbers[RED] = 200
-}
+  function reddify(someTing){
+    rgbNumbers[RED] = 200
+  }
 
 // TODO 6: Create more filter functions
 
