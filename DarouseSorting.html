@@ -30,9 +30,16 @@
 
     function sortNumbers() {
         //put your code here
-        for (var i = 0 ; listToSort.length > i; i++){
-            var temp = listToSort[i]
-            listToSort[i] = listToSort[i] + 1
+        var swap = false
+        while(!sort) {
+            for (var i = 0 ; listToSort.length > i; i++){
+                showCurrentSort(sortedList, i)
+                if(listToSort[i] > listToSort[i + 1])
+                var current = listToSort[i]
+                listToSort[i] = listToSort[i + 1]
+                listToSort[i + 1] = current
+                swap = true
+            }
         }
        showCurrentSort(sortedList,6)//this exists so you can see the result of the quick sort.
     }
