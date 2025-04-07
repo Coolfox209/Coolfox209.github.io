@@ -64,6 +64,7 @@ async function partition(array, left, right){
 }
 
 // TODO 1: Implement swap
+
     function swap(array, i, j){
         var temp = array[i];
         array[i] = array[j];
